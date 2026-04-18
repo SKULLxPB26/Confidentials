@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fun Surprise ❤️</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background:#ffe6f0;
+padding:40px;
+}
+
+button{
+padding:12px 20px;
+margin:10px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+img{
+margin-top:20px;
+max-width:300px;
+border-radius:10px;
+}
+
+#next{
+display:none;
+font-size:18px;
+}
+
+#msg{
+font-size:20px;
+color:#d6006e;
+margin-top:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2 id="question">Choose an animal</h2>
+
+<div id="options">
+<button onclick="showImage('lion')">A: Lion</button>
+<button onclick="showImage('tiger')">B: Tiger</button>
+</div>
+
+<img id="animalImg" src="" style="display:none">
+
+<p id="msg"></p>
+
+<br>
+<button id="next" onclick="nextQuestion()">Next</button>
+
+<script>
+
+let step = 1;
+
+function showImage(animal){
+
+let img = document.getElementById("animalImg");
+let msg = document.getElementById("msg");
+
+msg.innerHTML="";
+
+if(step==1){
+
+if(animal=="lion"){
+img.src="lion.jpg";
+}
+else{
+img.src="tiger.jpg";
+}
+
+}
+
+if(step==2){
+
+if(animal=="elephant"){
+img.src="elephant.jpg";
+}
+else{
+img.src="zebra.jpg";
+}
+
+}
+
+if(step==3){
+
+if(animal=="panda"){
+img.src="herphoto1.jpeg";
+}
+else{
+img.src="herphoto2.jpeg";
+}
+
+msg.innerHTML="You are cuter than all these animals ❤️";
+
+}
+
+img.style.display="block";
+document.getElementById("next").style.display="inline";
+
+}
+
+function nextQuestion(){
+
+step++;
+
+let q = document.getElementById("question");
+let opt = document.getElementById("options");
+let next = document.getElementById("next");
+
+document.getElementById("animalImg").style.display="none";
+document.getElementById("msg").innerHTML="";
+next.style.display="none";
+
+if(step==2){
+
+q.innerHTML="Choose another animal";
+
+opt.innerHTML=`
+<button onclick="showImage('elephant')">A: Elephant</button>
+<button onclick="showImage('zebra')">B: Zebra</button>
+`;
+
+}
+
+else if(step==3){
+
+q.innerHTML="Final question";
+
+opt.innerHTML=`
+<button onclick="showImage('panda')">A: Panda</button>
+<button onclick="showImage('doe')">B: Doe</button>
+`;
+
+}
+
+else{
+
+q.innerHTML="Surprise ❤️ You are the cutest creature on Earth!";
+opt.style.display="none";
+next.style.display="none";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
